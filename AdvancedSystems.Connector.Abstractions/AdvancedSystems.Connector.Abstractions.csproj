@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+      <TargetFramework>net8.0</TargetFramework>
+      <Version>0.0.0-alpha</Version>
+      <Description>TODO</Description>
+      <PackageId>AdvancedSystems.Connector.Abstractions</PackageId>
+      <RootNamespace>AdvancedSystems.Connector.Abstractions</RootNamespace>
+      <Title>Advanced Systems Connector Abstractions Library</Title>
+  </PropertyGroup>
+
+</Project>
