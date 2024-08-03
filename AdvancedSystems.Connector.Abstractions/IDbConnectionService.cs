@@ -1,4 +1,6 @@
-﻿namespace AdvancedSystems.Connector.Abstractions;
+﻿using System.Data;
+
+namespace AdvancedSystems.Connector.Abstractions;
 
 public interface IDbConnectionService
 {
@@ -10,9 +12,9 @@ public interface IDbConnectionService
 
     #region Methods
 
-    void ExecuteQuery();
+    DataSet ExecuteQuery(IDbCommand command);
 
-    void ExecuteNonQuery();
+    int ExecuteNonQuery(IDbCommand command);
 
     #endregion
 }
