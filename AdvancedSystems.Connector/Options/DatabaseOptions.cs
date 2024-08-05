@@ -5,8 +5,14 @@ using Microsoft.Data.SqlClient;
 
 namespace AdvancedSystems.Connector.Options;
 
-public class DbSettings
+public class DatabaseOptions
 {
+    /// <summary>
+    ///     Gets or sets the name of the application associated with the connection string.
+    /// </summary>
+    [DisplayName("Application Name")]
+    public required string ApplicationName { get; set; }
+
     /// <summary>
     ///     Gets or sets the name or network address of the instance of SQL Server to connect to.
     /// </summary>

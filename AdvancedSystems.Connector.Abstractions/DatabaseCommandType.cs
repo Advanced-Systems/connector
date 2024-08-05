@@ -3,7 +3,7 @@
 /// <summary>
 ///     Specifies how a command string is interpreted.
 /// </summary>
-public enum CommandType
+public enum DatabaseCommandType
 {
     /// <summary>
     ///     An SQL command.

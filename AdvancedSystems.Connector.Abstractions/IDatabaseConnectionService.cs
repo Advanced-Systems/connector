@@ -2,7 +2,7 @@
 
 namespace AdvancedSystems.Connector.Abstractions;
 
-public interface IDbConnectionService
+public interface IDatabaseConnectionService
 {
     #region Properties
 
@@ -12,9 +12,9 @@ public interface IDbConnectionService
 
     #region Methods
 
-    DataSet ExecuteQuery(IDbCommand command);
+    DataSet ExecuteQuery(IDatabaseCommand command);
 
-    int ExecuteNonQuery(IDbCommand command);
+    int ExecuteNonQuery(IDatabaseCommand command);
 
     #endregion
 }

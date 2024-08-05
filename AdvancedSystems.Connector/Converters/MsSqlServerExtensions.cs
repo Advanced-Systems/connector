@@ -6,7 +6,7 @@ using AdvancedSystems.Connector.Options;
 
 using Microsoft.Data.SqlClient;
 
-using CommandType = AdvancedSystems.Connector.Abstractions.CommandType;
+using DatabaseCommandType = AdvancedSystems.Connector.Abstractions.DatabaseCommandType;
 using InternalCommandType = System.Data.CommandType;
 
 namespace AdvancedSystems.Connector.Converters;
@@ -39,17 +39,17 @@ internal static class MsSqlServerExtensions
 
     #region Converters
 
-    internal static InternalCommandType Cast(this CommandType commandType)
+    internal static InternalCommandType Cast(this DatabaseCommandType commandType)
     {
         return commandType switch
         {
-            CommandType.Text => InternalCommandType.Text,
-            CommandType.StoredProcedure => InternalCommandType.StoredProcedure,
+            DatabaseCommandType.Text => InternalCommandType.Text,
+            DatabaseCommandType.StoredProcedure => InternalCommandType.StoredProcedure,
             _ => throw new NotImplementedException(Enum.GetName(commandType)),
         };
     }
 
-    internal static SqlParameter Cast(this IDbParameter parameter)
+    internal static SqlParameter Cast(this IDatabaseParameter parameter)
     {
         return new SqlParameter
         {

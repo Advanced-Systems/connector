@@ -4,7 +4,7 @@ using AdvancedSystems.Connector.Abstractions;
 
 namespace AdvancedSystems.Connector.Common;
 
-public sealed class DbParameter : IDbParameter
+public sealed class DatabaseParameter : IDatabaseParameter
 {
     #region Properties
 

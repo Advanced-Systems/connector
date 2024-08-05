@@ -2,21 +2,21 @@
 
 namespace AdvancedSystems.Connector.Abstractions;
 
-public interface IDbCommand
+public interface IDatabaseCommand
 {
     #region Properties
 
     string CommandText { get; set; }
 
-    CommandType CommandType { get; set; }
+    DatabaseCommandType CommandType { get; set; }
 
-    List<IDbParameter> Parameters { get; set; }
+    List<IDatabaseParameter> Parameters { get; set; }
 
     #endregion
 
     #region Methods
 
-    void AddParameter(IDbParameter parameter);
+    void AddParameter(IDatabaseParameter parameter);
 
     void AddParameter<T>(string name, T value);
 

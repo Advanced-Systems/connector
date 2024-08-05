@@ -4,14 +4,8 @@ using Microsoft.Data.SqlClient;
 
 namespace AdvancedSystems.Connector.Options;
 
-public sealed class MsSqlServerSettings : DbSettings
+public sealed class MsSqlServerSettings : DatabaseOptions
 {
-    /// <summary>
-    ///     Gets or sets the name of the application associated with the connection string.
-    /// </summary>
-    [DisplayName("Application Name")]
-    public string? ApplicationName { get; set; }
-
     /// <summary>
     ///     Gets or sets the default wait time (in seconds) before terminating the attempt to execute
     ///     a command and generating an error. The default is 30 seconds.

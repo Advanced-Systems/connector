@@ -14,13 +14,13 @@ public static class ServiceCollectionExtensions
 {
     #region DbConnectionService
 
-    private static IServiceCollection AddDbConnectionService<T>(this IServiceCollection services) where T : class, IDbConnectionService
+    private static IServiceCollection AddDbConnectionService<T>(this IServiceCollection services) where T : class, IDatabaseConnectionService
     {
-        services.TryAdd(ServiceDescriptor.Singleton<IDbConnectionService, T>());
+        services.TryAdd(ServiceDescriptor.Transient<IDatabaseConnectionService, T>());
         return services;
     }
 
-    private static IServiceCollection AddDbConnectionService<T, U>(this IServiceCollection services, Action<U> setupAction) where T : class, IDbConnectionService where U : DbSettings
+    private static IServiceCollection AddDbConnectionService<T, U>(this IServiceCollection services, Action<U> setupAction) where T : class, IDatabaseConnectionService where U : DatabaseOptions
     {
         services.AddOptions()
             .Configure(setupAction);
@@ -29,10 +29,10 @@ public static class ServiceCollectionExtensions
         return services;
     }
 
-    private static IServiceCollection AddDbConnectionService<T, U>(this IServiceCollection services, IConfiguration configuration) where T : class, IDbConnectionService where U : DbSettings
+    private static IServiceCollection AddDbConnectionService<T, U>(this IServiceCollection services, IConfiguration configuration) where T : class, IDatabaseConnectionService where U : DatabaseOptions
     {
         services.AddOptions<U>()
-            .Bind(configuration.GetRequiredSection(Sections.DB_SETTINGS))
+            .Bind(configuration.GetRequiredSection(Sections.DATABASE))
             .ValidateDataAnnotations()
             .ValidateOnStart();
 
@@ -44,7 +44,7 @@ public static class ServiceCollectionExtensions
 
     #region Microsoft SQL Server
 
-    public static IServiceCollection AddMsSqlServerConnectionService(this IServiceCollection services, Action<DbSettings> setupAction)
+    public static IServiceCollection AddMsSqlServerConnectionService(this IServiceCollection services, Action<MsSqlServerSettings> setupAction)
     {
         services.AddDbConnectionService<MsSqlServerConnectionService, MsSqlServerSettings>(setupAction);
         return services;

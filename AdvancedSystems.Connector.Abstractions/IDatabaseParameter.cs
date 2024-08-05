@@ -2,7 +2,7 @@
 
 namespace AdvancedSystems.Connector.Abstractions;
 
-public interface IDbParameter
+public interface IDatabaseParameter
 {
     #region Properties
 

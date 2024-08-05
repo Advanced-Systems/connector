@@ -7,18 +7,18 @@ using Microsoft.Extensions.Logging;
 
 namespace AdvancedSystems.Connector.Services;
 
-public sealed class DbConnectionFactory : IDbConnectionFactory
+public sealed class DatabaseConnectionFactory : IDatabaseConnectionFactory
 {
-    private readonly ILogger<DbConnectionFactory> _logger;
+    private readonly ILogger<DatabaseConnectionFactory> _logger;
     private readonly IServiceProvider _serviceProvider;
 
-    public DbConnectionFactory(ILogger<DbConnectionFactory> logger, IServiceProvider serviceProvider)
+    public DatabaseConnectionFactory(ILogger<DatabaseConnectionFactory> logger, IServiceProvider serviceProvider)
     {
         this._logger = logger;
         this._serviceProvider = serviceProvider;
     }
 
-    public IDbConnectionService Create(Provider provider)
+    public IDatabaseConnectionService Create(Provider provider)
     {
         return provider switch
         {
