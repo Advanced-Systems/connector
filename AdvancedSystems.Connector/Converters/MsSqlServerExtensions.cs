@@ -19,17 +19,21 @@ internal static class MsSqlServerExtensions
     {
         var builder = new SqlConnectionStringBuilder
         {
-            UserID = settings.UserID,
-            Password = settings.Password,
+            // Database Options
+            ApplicationName = settings.ApplicationName,
             DataSource = settings.DataSource,
             InitialCatalog = settings.InitialCatalog,
-            MinPoolSize = settings.MinPoolSize,
-            MaxPoolSize = settings.MaxPoolSize,
-            ConnectTimeout = settings.ConnectTimeout,
+            Password = settings.Password,
+            UserID = settings.UserID,
+            // Microsoft SQL Server Options
             CommandTimeout = settings.CommandTimeout,
-            TrustServerCertificate = settings.TrustServerCertificate,
-            ApplicationName = settings.ApplicationName,
+            ConnectTimeout = settings.ConnectTimeout,
             Encrypt = settings.Encrypt,
+            IntegratedSecurity = settings.IntegratedSecurity,
+            MaxPoolSize = settings.MaxPoolSize,
+            MinPoolSize = settings.MinPoolSize,
+            Pooling = settings.Pooling,
+            TrustServerCertificate = settings.TrustServerCertificate,
         };
 
         return builder.ToString();

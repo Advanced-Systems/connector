@@ -28,6 +28,14 @@ public sealed class MsSqlServerSettings : DatabaseOptions
     public SqlConnectionEncryptOption? Encrypt { get; set; }
 
     /// <summary>
+    ///     Gets or sets a Boolean value that indicates whether User ID and Password are
+    ///     specified in the connection (when false) or whether the current Windows account
+    ///     credentials are used for authentication (when true).
+    /// </summary>
+    [DisplayName("Integrated Security")]
+    public bool IntegratedSecurity { get; set; }
+
+    /// <summary>
     ///     Gets or sets the maximum number of connections allowed in the connection pool for this specific
     ///     connection string.
     /// </summary>
