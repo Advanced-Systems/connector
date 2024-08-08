@@ -88,10 +88,9 @@ public sealed class MsSqlServerConnectionService : IDatabaseConnectionService
             sqlCommand.CommandText = databaseCommand.CommandText;
             sqlCommand.CommandType = databaseCommand.CommandType.Cast();
 
-            if (!databaseCommand.Parameters.IsNullOrEmpty())
+            foreach (var parameter in databaseCommand.Parameters)
             {
-                var parameters = databaseCommand.Parameters.Select(p => p.Cast()).ToArray();
-                sqlCommand.Parameters.AddRange(parameters);
+                sqlCommand.Parameters.AddWithValue(parameter.ParameterName, parameter.Value);
             }
 
             using var adapter = new SqlDataAdapter(sqlCommand);
@@ -129,10 +128,9 @@ public sealed class MsSqlServerConnectionService : IDatabaseConnectionService
             sqlCommand.CommandText = databaseCommand.CommandText;
             sqlCommand.CommandType = databaseCommand.CommandType.Cast();
 
-            if (!databaseCommand.Parameters.IsNullOrEmpty())
+            foreach (var parameter in databaseCommand.Parameters)
             {
-                var parameters = databaseCommand.Parameters.Select(p => p.Cast()).ToArray();
-                sqlCommand.Parameters.AddRange(parameters);
+                sqlCommand.Parameters.AddWithValue(parameter.ParameterName, parameter.Value);
             }
 
             using var reader = await sqlCommand.ExecuteReaderAsync(cancellationToken);
@@ -170,10 +168,9 @@ public sealed class MsSqlServerConnectionService : IDatabaseConnectionService
             sqlCommand.CommandText = databaseCommand.CommandText;
             sqlCommand.CommandType = databaseCommand.CommandType.Cast();
 
-            if (!databaseCommand.Parameters.IsNullOrEmpty())
+            foreach (var parameter in databaseCommand.Parameters)
             {
-                var parameters = databaseCommand.Parameters.Select(p => p.Cast()).ToArray();
-                sqlCommand.Parameters.AddRange(parameters);
+                sqlCommand.Parameters.AddWithValue(parameter.ParameterName, parameter.Value);
             }
 
             rowsAffected = sqlCommand.ExecuteNonQuery();
@@ -210,10 +207,9 @@ public sealed class MsSqlServerConnectionService : IDatabaseConnectionService
             sqlCommand.CommandText = databaseCommand.CommandText;
             sqlCommand.CommandType = databaseCommand.CommandType.Cast();
 
-            if (!databaseCommand.Parameters.IsNullOrEmpty())
+            foreach (var parameter in databaseCommand.Parameters)
             {
-                var parameters = databaseCommand.Parameters.Select(p => p.Cast()).ToArray();
-                sqlCommand.Parameters.AddRange(parameters);
+                sqlCommand.Parameters.AddWithValue(parameter.ParameterName, parameter.Value);
             }
 
             rowsAffected = await sqlCommand.ExecuteNonQueryAsync(cancellationToken);

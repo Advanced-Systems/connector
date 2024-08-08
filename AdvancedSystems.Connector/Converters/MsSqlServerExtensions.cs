@@ -53,16 +53,6 @@ internal static class MsSqlServerExtensions
         };
     }
 
-    internal static SqlParameter Cast(this IDatabaseParameter parameter)
-    {
-        return new SqlParameter
-        {
-            ParameterName = parameter.ParameterName,
-            SqlDbType = parameter.SqlDbType,
-            Value = parameter.Value,
-        };
-    }
-
     internal static SqlDbType Cast(this Type type)
     {
         var typeCode = Type.GetTypeCode(Nullable.GetUnderlyingType(type) ?? type);
