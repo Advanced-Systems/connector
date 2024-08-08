@@ -1,4 +1,6 @@
 ﻿using System.Data;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace AdvancedSystems.Connector.Abstractions;
 
@@ -12,9 +14,13 @@ public interface IDatabaseConnectionService
 
     #region Methods
 
-    DataSet ExecuteQuery(IDatabaseCommand command);
+    DataSet ExecuteQuery(IDatabaseCommand databaseCommand);
 
-    int ExecuteNonQuery(IDatabaseCommand command);
+    ValueTask<DataSet?> ExecuteQueryAsync(IDatabaseCommand databaseCommand, CancellationToken cancellationToken);
+
+    int ExecuteNonQuery(IDatabaseCommand databaseCommand);
+
+    ValueTask<int> ExecuteNonQueryAsync(IDatabaseCommand databaseCommand, CancellationToken cancellationToken);
 
     #endregion
 }
