@@ -4,14 +4,8 @@ using Microsoft.Data.SqlClient;
 
 namespace AdvancedSystems.Connector.Options;
 
-public sealed class MsSqlServerSettings : DbSettings
+public sealed class MsSqlServerSettings : DatabaseOptions
 {
-    /// <summary>
-    ///     Gets or sets the name of the application associated with the connection string.
-    /// </summary>
-    [DisplayName("Application Name")]
-    public string? ApplicationName { get; set; }
-
     /// <summary>
     ///     Gets or sets the default wait time (in seconds) before terminating the attempt to execute
     ///     a command and generating an error. The default is 30 seconds.
@@ -32,6 +26,14 @@ public sealed class MsSqlServerSettings : DbSettings
     /// </summary>
     [DisplayName("Encrypt")]
     public SqlConnectionEncryptOption? Encrypt { get; set; }
+
+    /// <summary>
+    ///     Gets or sets a Boolean value that indicates whether User ID and Password are
+    ///     specified in the connection (when false) or whether the current Windows account
+    ///     credentials are used for authentication (when true).
+    /// </summary>
+    [DisplayName("Integrated Security")]
+    public bool IntegratedSecurity { get; set; }
 
     /// <summary>
     ///     Gets or sets the maximum number of connections allowed in the connection pool for this specific

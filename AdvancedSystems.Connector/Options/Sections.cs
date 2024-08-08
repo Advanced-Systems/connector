@@ -2,5 +2,5 @@
 
 public readonly record struct Sections
 {
-    public const string DB_SETTINGS = "DbSettings";
+    public const string DATABASE = "Database";
 }
