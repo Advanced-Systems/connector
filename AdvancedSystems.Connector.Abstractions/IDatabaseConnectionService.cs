@@ -10,6 +10,8 @@ public interface IDatabaseConnectionService
 
     string ConnectionString { get; }
 
+    ConnectionState ConnectionState { get; }
+
     #endregion
 
     #region Methods
